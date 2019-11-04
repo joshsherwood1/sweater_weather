@@ -4,20 +4,32 @@ class GoogleGeocodingService
   end
 
   def coordinates
-    parse_json(conn.get("", address: @data, key: ENV['GOOGLE_API_KEY']))
+    response = get_coordinate_data
+    parse_json(response)
   end
 
   def location
-    parse_json(conn.get("", latlng: "#{@data[:lat]},#{@data[:long]}",
-                            key: ENV['GOOGLE_API_KEY'], result_type: "country"))
+    response = get_location_data
+    parse_json(response)
   end
 
   private
+
+  attr_reader :data
 
   def conn
     Faraday.new(url: 'https://maps.googleapis.com/maps/api/geocode/json') do |faraday|
       faraday.adapter Faraday.default_adapter
     end
+  end
+
+  def get_coordinate_data
+    conn.get("", address: @data, key: ENV['GOOGLE_API_KEY'])
+  end
+
+  def get_location_data
+    conn.get("", latlng: "#{@data[:lat]},#{@data[:long]}",
+                            key: ENV['GOOGLE_API_KEY'], result_type: "country")
   end
 
   def parse_json(response)
