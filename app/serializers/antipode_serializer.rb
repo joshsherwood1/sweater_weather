@@ -1,8 +1,8 @@
 class AntipodeSerializer
-  def initialize(forecast_data, location, searched_city)
-    @forecast_data = forecast_data
-    @location = location
-    @searched_city = searched_city
+  def initialize(array = [])
+    @forecast_data = array.first
+    @location = array[1]
+    @searched_city = array.last
   end
 
   def json
