@@ -3,11 +3,11 @@ class PictureFacade
     @location = location
   end
 
-  def git_picture
-    git_picture_for_city(@location)[:results].first[:geometry][:location]
+  def get_picture
+    get_picture_for_city(@location)[:urls][:raw]
   end
 
-  def git_picture_for_city(location)
-    GoogleGeocodingService.new(location).picture
+  def get_picture_for_city(location)
+    UnsplashService.new(location).picture
   end
 end
