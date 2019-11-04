@@ -3,7 +3,6 @@ class AntipodeSerializer
     @forecast_data = forecast_data
     @location = location
     @searched_city = searched_city
-    binding.pry
   end
 
   def json
