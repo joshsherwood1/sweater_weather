@@ -4,7 +4,8 @@ class LocationFacade
   end
 
   def get_location
-    get_location_for_city(@antipode_coordinates)
+    @location = get_location_for_city(@antipode_coordinates)[:plus_code][:compound_code]
+    @location.split(" ").drop(1).join(' ')
   end
 
   def get_location_for_city(location)
