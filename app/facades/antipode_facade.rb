@@ -4,9 +4,9 @@ class AntipodeFacade
   end
 
   def get_coordinates
-    get_antipode_coordinates(@coordinates)
+    get_antipode_coordinates(@coordinates)[:data][:attributes]
   end
-  
+
   def get_antipode_coordinates(coordinates)
     AntipodeService.new(coordinates).coordinates
   end
