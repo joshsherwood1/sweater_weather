@@ -3,7 +3,13 @@ require 'rails_helper'
 describe "Register endpoint" do
   it "user can create account and receive access token" do
 
-    post '/api/v1/users', :params => { "email" => "whatever@example.com", "password" => "password", "password_confirmation" => "password" }
+    register = '{
+              "email": "whatever@example.com",
+              "password": "password",
+              "password_confirmation": "password"
+              }'
+
+    post '/api/v1/users', params: register
 
     expect(response).to be_successful
     data = JSON.parse(response.body)
@@ -15,7 +21,13 @@ describe "Register endpoint" do
 
   it "user cannot create account when passwords do not match" do
 
-    post '/api/v1/users', :params => { "email" => "whatever@example.com", "password" => "password", "password_confirmation" => "password123456" }
+    register = '{
+              "email": "whatever@example.com",
+              "password": "password",
+              "password_confirmation": "password123345"
+              }'
+
+    post '/api/v1/users', params: register, headers: headers
 
     expect(response).to be_successful
     data = JSON.parse(response.body)
@@ -26,8 +38,25 @@ describe "Register endpoint" do
 
   it "user cannot create account when email has already been taken" do
 
-    post '/api/v1/users', :params => { "email" => "whatever@example.com", "password" => "password", "password_confirmation" => "password" }
-    post '/api/v1/users', :params => { "email" => "whatever@example.com", "password" => "password", "password_confirmation" => "password" }
+    register = '{
+              "email": "whatever@example.com",
+              "password": "password",
+              "password_confirmation": "password"
+              }'
+
+    post '/api/v1/users', params: register, headers: headers
+
+    headers_2 = {
+                "CONTENT_TYPE" => "application/json",
+                "ACCEPT" => "application/json"
+              }
+    register_2 = '{
+              "email": "whatever@example.com",
+              "password": "password",
+              "password_confirmation": "password"
+              }'
+
+    post '/api/v1/users', params: register_2, headers: headers_2
 
     expect(response).to be_successful
     data = JSON.parse(response.body)
