@@ -1,7 +1,8 @@
 require 'securerandom'
 
 class Api::V1::UsersController < ApplicationController
-
+  skip_before_action :verify_authenticity_token, only: [:create]
+  
   def create
     information = JSON.parse(request.body.read, symbolize_names: true)
     user = User.new(information)
