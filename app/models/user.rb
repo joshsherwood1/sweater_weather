@@ -3,9 +3,9 @@ class User < ApplicationRecord
 
   validates_presence_of :password_digest, require: true
 
-  before_validation {
-    (self.email = self.email.to_s.downcase)
-  }
+  # before_validation {
+  #   (self.email = self.email.to_s.downcase)
+  # }
 
   validates_presence_of     :email
   validates_uniqueness_of   :email
