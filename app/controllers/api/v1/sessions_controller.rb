@@ -6,7 +6,7 @@ class Api::V1::SessionsController < ApplicationController
     user = User.find_by(email: information[:email])
     if user && user.authenticate(information[:password])
       session[:user_id] = user.id
-      render json: UserSerializer.new(user.api_key).json
+      render json: UserLoginSerializer.new(user.api_key).json
     else
       render json: ErrorSerializer.new("Login information incorrect").json
     end
