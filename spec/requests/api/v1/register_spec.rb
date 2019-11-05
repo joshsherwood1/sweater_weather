@@ -21,7 +21,7 @@ describe "Register endpoint" do
     data = JSON.parse(response.body)
     expect(data.count).to eq(2)
     expect(data["status"]).to eq(422)
-    expect(data["body"]["msg"]).to eq("Password confirmation doesn't match Password and Password confirmation doesn't match Password")
+    expect(data["body"]["msg"]).to eq("Password confirmation doesn't match Password")
   end
 
   it "user cannot create account when email has already been taken" do
@@ -34,16 +34,5 @@ describe "Register endpoint" do
     expect(data.count).to eq(2)
     expect(data["status"]).to eq(422)
     expect(data["body"]["msg"]).to eq("Email has already been taken")
-  end
-
-  it "user cannot create account when password does not meet requirements" do
-
-    post '/api/v1/users', :params => { "email" => "whatever@example.com", "password" => "pass", "password_confirmation" => "pass" }
-
-    expect(response).to be_successful
-    data = JSON.parse(response.body)
-    expect(data.count).to eq(2)
-    expect(data["status"]).to eq(422)
-    expect(data["body"]["msg"]).to eq("Password is too short (minimum is 8 characters)")
   end
 end
