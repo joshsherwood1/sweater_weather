@@ -2,6 +2,10 @@ require 'rails_helper'
 
 RSpec.describe 'dark sky api service' do
   it 'returns forecast' do
+
+    json_response_2 = File.open('./spec/fixtures/weather_data.json')
+    stub_request(:get, "https://api.darksky.net/forecast/#{ENV['DARK_SKY_API_KEY']}/43.0731,89.4012?exclude=minutely").to_return(status: 200, body: json_response_2)
+
     latitude = "43.0731"
     longitude = "89.4012"
     service = DarkSkyService.new(latitude, longitude)
