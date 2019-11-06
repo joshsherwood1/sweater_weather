@@ -4,10 +4,16 @@ class PictureFacade
   end
 
   def get_picture
-    get_picture_for_city(@location)[:urls][:raw]
+    obtain_and_format_picture
   end
 
-  def get_picture_for_city(location)
+  private
+
+  def get_picture_from_api(location)
     UnsplashService.new(location).picture
+  end
+
+  def obtain_and_format_picture
+    get_picture_from_api(@location)[:urls][:raw]
   end
 end

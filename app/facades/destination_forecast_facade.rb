@@ -6,11 +6,17 @@ class DestinationForecastFacade
   end
 
   def get_predicted_forecast
-    data = get_predicted_forecast_for_city(@latitude, @longitude)
-    DestinationForecast.new(data, @hours_to_destination)
+    obtain_and_format_predicted_forecast
   end
 
-  def get_predicted_forecast_for_city(latitude, longitude)
+  private
+
+  def get_predicted_forecast_from_api(latitude, longitude)
     DarkSkyService.new(latitude, longitude).forecast
+  end
+
+  def obtain_and_format_predicted_forecast
+    data = get_predicted_forecast_from_api(@latitude, @longitude)
+    DestinationForecast.new(data, @hours_to_destination)
   end
 end

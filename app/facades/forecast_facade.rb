@@ -4,11 +4,17 @@ class ForecastFacade
   end
 
   def get_forecast
-    data = get_forecast_for_city(@coordinates[:lat], @coordinates[:lng])
-    [CurrentWeather.new(data), Details.new(data), DailyForecast.new(data), HourlyForecast.new(data)]
+    obtain_and_format_forecast
   end
 
-  def get_forecast_for_city(latitude, longitude)
+  private
+
+  def get_forecast_from_api(latitude, longitude)
     DarkSkyService.new(latitude, longitude).forecast
+  end
+
+  def obtain_and_format_forecast
+    data = get_forecast_from_api(@coordinates[:lat], @coordinates[:lng])
+    [CurrentWeather.new(data), Details.new(data), DailyForecast.new(data), HourlyForecast.new(data)]
   end
 end
