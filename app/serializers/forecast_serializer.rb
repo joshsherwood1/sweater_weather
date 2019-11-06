@@ -4,7 +4,8 @@ class ForecastSerializer
     @location = location
     @current_weather = array.first
     @details = array[1]
-    @data = array.last
+    @daily_forecast = array[2]
+    @hourly_forecast = array.last
   end
 
   def json
@@ -31,66 +32,66 @@ class ForecastSerializer
       },
       forecast: {
         hourly: [
-          { hour: DateTime.strptime(@data[:hourly][:data][0][:time].to_s,'%s').in_time_zone(@data[:timezone]).strftime("%I:%M%p"),
-            temp: @data[:hourly][:data][0][:temperature]
+          { hour: @hourly_forecast.first_hour,
+            temp: @hourly_forecast.first_temp
           },
-          { hour: DateTime.strptime(@data[:hourly][:data][1][:time].to_s,'%s').in_time_zone(@data[:timezone]).strftime("%I:%M%p"),
-            temp: @data[:hourly][:data][1][:temperature]
+          { hour: @hourly_forecast.second_hour,
+            temp: @hourly_forecast.second_temp
           },
-          { hour: DateTime.strptime(@data[:hourly][:data][2][:time].to_s,'%s').in_time_zone(@data[:timezone]).strftime("%I:%M%p"),
-            temp: @data[:hourly][:data][2][:temperature]
+          { hour: @hourly_forecast.third_hour,
+            temp: @hourly_forecast.third_temp
           },
-          { hour: DateTime.strptime(@data[:hourly][:data][3][:time].to_s,'%s').in_time_zone(@data[:timezone]).strftime("%I:%M%p"),
-            temp: @data[:hourly][:data][3][:temperature]
+          { hour: @hourly_forecast.fourth_hour,
+            temp: @hourly_forecast.fourth_temp
           },
-          { hour: DateTime.strptime(@data[:hourly][:data][4][:time].to_s,'%s').in_time_zone(@data[:timezone]).strftime("%I:%M%p"),
-            temp: @data[:hourly][:data][4][:temperature]
+          { hour: @hourly_forecast.fifth_hour,
+            temp: @hourly_forecast.fifth_temp
           },
-          { hour: DateTime.strptime(@data[:hourly][:data][5][:time].to_s,'%s').in_time_zone(@data[:timezone]).strftime("%I:%M%p"),
-            temp: @data[:hourly][:data][5][:temperature]
+          { hour: @hourly_forecast.sixth_hour,
+            temp: @hourly_forecast.sixth_temp
           },
-          { hour: DateTime.strptime(@data[:hourly][:data][6][:time].to_s,'%s').in_time_zone(@data[:timezone]).strftime("%I:%M%p"),
-            temp: @data[:hourly][:data][6][:temperature]
+          { hour: @hourly_forecast.seventh_hour,
+            temp: @hourly_forecast.seventh_temp
           },
-          { hour: DateTime.strptime(@data[:hourly][:data][7][:time].to_s,'%s').in_time_zone(@data[:timezone]).strftime("%I:%M%p"),
-            temp: @data[:hourly][:data][7][:temperature]
+          { hour: @hourly_forecast.final_hour,
+            temp: @hourly_forecast.final_temp
           },
         ],
         daily: [
-          { day: DateTime.strptime(@data[:daily][:data][0][:time].to_s,'%s').in_time_zone(@data[:timezone]).strftime("%A"),
-            condition: @data[:daily][:data][0][:summary],
-            icon: @data[:daily][:data][0][:icon],
-            precipitation_chance: @data[:daily][:data][0][:precipProbability],
-            high: @data[:daily][:data][0][:temperatureHigh],
-            low: @data[:daily][:data][0][:temperatureLow]
+          { day: @daily_forecast.day_1,
+            condition: @daily_forecast.condition_1,
+            icon: @daily_forecast.icon_1,
+            precipitation_chance: @daily_forecast.precipitation_chance_1,
+            high: @daily_forecast.high_1,
+            low: @daily_forecast.low_1
           },
-          { day: DateTime.strptime(@data[:daily][:data][1][:time].to_s,'%s').in_time_zone(@data[:timezone]).strftime("%A"),
-            condition: @data[:daily][:data][1][:summary],
-            icon: @data[:daily][:data][1][:icon],
-            precipitation_chance: @data[:daily][:data][1][:precipProbability],
-            high: @data[:daily][:data][1][:temperatureHigh],
-            low: @data[:daily][:data][1][:temperatureLow]
+          { day: @daily_forecast.day_2,
+            condition: @daily_forecast.condition_2,
+            icon: @daily_forecast.icon_2,
+            precipitation_chance: @daily_forecast.precipitation_chance_2,
+            high: @daily_forecast.high_2,
+            low: @daily_forecast.low_2
           },
-          { day: DateTime.strptime(@data[:daily][:data][2][:time].to_s,'%s').in_time_zone(@data[:timezone]).strftime("%A"),
-            condition: @data[:daily][:data][2][:summary],
-            icon: @data[:daily][:data][2][:icon],
-            precipitation_chance: @data[:daily][:data][2][:precipProbability],
-            high: @data[:daily][:data][2][:temperatureHigh],
-            low: @data[:daily][:data][2][:temperatureLow]
+          { day: @daily_forecast.day_3,
+            condition: @daily_forecast.condition_3,
+            icon: @daily_forecast.icon_3,
+            precipitation_chance: @daily_forecast.precipitation_chance_3,
+            high: @daily_forecast.high_3,
+            low: @daily_forecast.low_3
           },
-          { day: DateTime.strptime(@data[:daily][:data][3][:time].to_s,'%s').in_time_zone(@data[:timezone]).strftime("%A"),
-            condition: @data[:daily][:data][3][:summary],
-            icon: @data[:daily][:data][3][:icon],
-            precipitation_chance: @data[:daily][:data][3][:precipProbability],
-            high: @data[:daily][:data][3][:temperatureHigh],
-            low: @data[:daily][:data][3][:temperatureLow]
+          { day: @daily_forecast.day_4,
+            condition: @daily_forecast.condition_4,
+            icon: @daily_forecast.icon_4,
+            precipitation_chance: @daily_forecast.precipitation_chance_4,
+            high: @daily_forecast.high_4,
+            low: @daily_forecast.low_4
           },
-          { day: DateTime.strptime(@data[:daily][:data][4][:time].to_s,'%s').in_time_zone(@data[:timezone]).strftime("%A"),
-            condition: @data[:daily][:data][4][:summary],
-            icon: @data[:daily][:data][4][:icon],
-            precipitation_chance: @data[:daily][:data][4][:precipProbability],
-            high: @data[:daily][:data][4][:temperatureHigh],
-            low: @data[:daily][:data][4][:temperatureLow]
+          { day: @daily_forecast.day_5,
+            condition: @daily_forecast.condition_5,
+            icon: @daily_forecast.icon_5,
+            precipitation_chance: @daily_forecast.precipitation_chance_5,
+            high: @daily_forecast.high_5,
+            low: @daily_forecast.low_5
           },
         ]
       }
