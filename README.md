@@ -94,7 +94,7 @@ Accept: application/json
 ~~~
 Post request to https://sleepy-harbor-42563.herokuapp.com/api/v1/road_trip
 
-Body - email, password
+Body - origin, destination, api key
 Headers - content-type, accept
 
 example post request: https://sleepy-harbor-42563.herokuapp.com/api/v1/road_trip
