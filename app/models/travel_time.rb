@@ -11,6 +11,6 @@ class TravelTime
   private
 
   def make_rounded_down_hour(seconds)
-    (seconds / 3600)
+    (seconds / 3600.0).round(0)
   end
 end
