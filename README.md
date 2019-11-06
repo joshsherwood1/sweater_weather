@@ -1,24 +1,23 @@
-# README
+# Sweater Weather
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+### Specs
 
-Things you may want to cover:
+* Ruby 2.4.1
+* Rails 5.2.3
 
-* Ruby version
+### Details
 
-* System dependencies
+This is a solo project completed at the Turing School of Software and Design in the back-end program.
 
-* Configuration
+Sweater Weather allows users to obtain forecast information regarding a specified city. If visitors create an account, they can also obtain informatin regarding a city that they are driving to and the weather upon arrival.
 
-* Database creation
+### Website
 
-* Database initialization
+The code is hosted at https://sleepy-harbor-42563.herokuapp.com/
 
-* How to run the test suite
+Here are all the possible endpoints:
 
-* Services (job queues, cache servers, search engines, etc.)
+'''
+Hello
 
-* Deployment instructions
-
-* ...
+'''
