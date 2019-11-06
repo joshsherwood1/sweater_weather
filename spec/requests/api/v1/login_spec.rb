@@ -14,7 +14,7 @@ describe "Login endpoint" do
     expect(response).to be_successful
     data = JSON.parse(response.body)
     expect(data.count).to eq(2)
-    expect(data["status"]).to eq(201)
+    expect(data["status"]).to eq(200)
     expect(data["body"].keys).to eq(["api_key"])
     expect(data["body"].count).to eq(1)
   end
