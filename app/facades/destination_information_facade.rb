@@ -13,7 +13,10 @@ class DestinationInformationFacade
 
   def obtain_and_format_information
     @travel_information = TravelTimeFacade.new(@origin, @destination).get_travel_time
-    @forecast_data = DestinationForecastFacade.new(@travel_information.latitude, @travel_information.longitude, @travel_information.rounded_hour).get_predicted_forecast
+    @forecast_data = DestinationForecastFacade.new(@travel_information.latitude,
+                                                   @travel_information.longitude,
+                                                   @travel_information.rounded_hour)
+                                                   .get_predicted_forecast
     Destination.new(@travel_information, @forecast_data)
   end
 end
