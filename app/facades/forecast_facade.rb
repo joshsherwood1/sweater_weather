@@ -14,7 +14,8 @@ class ForecastFacade
   end
 
   def obtain_and_format_forecast
-    data = get_forecast_from_api(@coordinates[:lat], @coordinates[:lng])
-    [CurrentWeather.new(data), Details.new(data), DailyForecast.new(data), HourlyForecast.new(data)]
+    data = get_forecast_from_api(@coordinates.lat, @coordinates.lng)
+    [CurrentWeather.new(data), Details.new(data), DailyForecast.new(data),
+                                                  HourlyForecast.new(data)]
   end
 end
