@@ -46,6 +46,7 @@ example get request: https://sleepy-harbor-42563.herokuapp.com/api/v1/background
 Post request to https://sleepy-harbor-42563.herokuapp.com/api/v1/users
 
 Body - email, password, password confirmation
+Headers - content-type, accept
 
 example post request: https://sleepy-harbor-42563.herokuapp.com/api/v1/users
 
@@ -69,7 +70,8 @@ Accept: application/json
 ~~~
 Post request to https://sleepy-harbor-42563.herokuapp.com/api/v1/sessions
 
-Body - email, password, password confirmation
+Body - email, password
+Headers - content-type, accept
 
 example post request: https://sleepy-harbor-42563.herokuapp.com/api/v1/sessions
 
@@ -83,7 +85,31 @@ Accept: application/json
 {
   "email": "whatever@example.com",
   "password": "password"
-  "password_confirmation": "password"
+}
+
+~~~
+
+
+### Endpoint 5: Travel Forecast
+~~~
+Post request to https://sleepy-harbor-42563.herokuapp.com/api/v1/road_trip
+
+Body - email, password
+Headers - content-type, accept
+
+example post request: https://sleepy-harbor-42563.herokuapp.com/api/v1/road_trip
+
+---Headers---
+
+Content-Type: application/json
+Accept: application/json
+
+---Body---
+
+{
+  "origin": "Denver,CO",
+  "destination": "Orlando, FL",
+  "api_key": "GdISaQHo-mRkkKWWxIcQyQ"
 }
 
 ~~~
