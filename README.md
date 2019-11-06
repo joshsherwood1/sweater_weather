@@ -17,10 +17,13 @@ The code is hosted at https://sleepy-harbor-42563.herokuapp.com/
 
 Here are all the possible endpoints:
 
+Endpoint 1: Forecast
 ~~~
+Get request to https://sleepy-harbor-42563.herokuapp.com/api/v1/forecast
 
+Params - Location: city (e.g. denver, co)
 
-Hello
+example get request: https://sleepy-harbor-42563.herokuapp.com/api/v1/forecast?location=denver,co
 
 
 ~~~
