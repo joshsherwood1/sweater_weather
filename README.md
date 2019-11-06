@@ -112,4 +112,8 @@ Accept: application/json
   "api_key": "GdISaQHo-mRkkKWWxIcQyQ"
 }
 
+(note: api key is generated when user is created or when you log in)
+
 ~~~
+
+
