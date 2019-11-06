@@ -1,4 +1,5 @@
 class Api::V1::RoadtripController < ApplicationController
+  skip_before_action :verify_authenticity_token, only: [:show]
   def show
     information = JSON.parse(request.body.read, symbolize_names: true)
     user = User.find_by(api_key: information[:api_key])
