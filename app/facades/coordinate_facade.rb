@@ -14,6 +14,6 @@ class CoordinateFacade
   end
 
   def obtain_and_format_coordinates
-    get_coordiantes_from_api(@location)[:results].first[:geometry][:location]
+    Coordinate.new(get_coordiantes_from_api(@location))
   end
 end

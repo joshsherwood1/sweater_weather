@@ -14,6 +14,6 @@ class PictureFacade
   end
 
   def obtain_and_format_picture
-    get_picture_from_api(@location)[:urls][:raw]
+    Picture.new(get_picture_from_api(@location)).url
   end
 end
