@@ -39,3 +39,51 @@ example get request: https://sleepy-harbor-42563.herokuapp.com/api/v1/background
 
 
 ~~~
+
+
+### Endpoint 3: User Registration
+~~~
+Post request to https://sleepy-harbor-42563.herokuapp.com/api/v1/users
+
+Body - email, password, password confirmation
+
+example post request: https://sleepy-harbor-42563.herokuapp.com/api/v1/users
+
+---Headers---
+
+Content-Type: application/json
+Accept: application/json
+
+---Body---
+
+{
+  "email": "whatever@example.com",
+  "password": "password"
+  "password_confirmation": "password"
+}
+
+~~~
+
+
+### Endpoint 4: User Login
+~~~
+Post request to https://sleepy-harbor-42563.herokuapp.com/api/v1/sessions
+
+Body - email, password, password confirmation
+
+example post request: https://sleepy-harbor-42563.herokuapp.com/api/v1/sessions
+
+---Headers---
+
+Content-Type: application/json
+Accept: application/json
+
+---Body---
+
+{
+  "email": "whatever@example.com",
+  "password": "password"
+  "password_confirmation": "password"
+}
+
+~~~
